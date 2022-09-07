@@ -12,3 +12,11 @@ An attempt to learn microservices using Golang.
 - Handle error and return appropriate code for that 
 - Run the server using `go run main.go`
 - Use curl for query like `curl -v -d 'Request' localhost:9090`, `curl -v localhost:9090/goodbye`, `curl -v localhost:9090`
+
+### Part-2:
+- Add handler package
+- Build custom handlers
+- Use logger wih specific info
+- Define custom http server
+- Implement graceful shutdown
+- Add ReadTimeout, IdleTimeout, WriteTimeout
