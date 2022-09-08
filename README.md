@@ -20,3 +20,13 @@ An attempt to learn microservices using Golang.
 - Define custom http server
 - Implement graceful shutdown
 - Add ReadTimeout, IdleTimeout, WriteTimeout
+
+### Part-3:
+- Add product package
+- Introduce RESTful services
+- Add JSON encoding/ JSON serializing
+- Add filtering to HTTP requests
+
+## Resources:
+- [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+- [Go JSON encoding](https://pkg.go.dev/encoding/json)
