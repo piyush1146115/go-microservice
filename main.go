@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/piyush1146115/go-microservice/handlers"
+	"github.com/piyush1146115/go-microservice/product-api/handlers"
 	"log"
 	"net/http"
 	"os"
