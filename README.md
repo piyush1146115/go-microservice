@@ -26,7 +26,16 @@ An attempt to learn microservices using Golang.
 - Introduce RESTful services
 - Add JSON encoding/ JSON serializing
 - Add filtering to HTTP requests
+- Add http get request handler
+
+### Part-4:
+- Add http PUT and POST request handlers
+- Tested with the command : `curl -v localhost:9090/1 -XPUT -d '{"id":1, "name":"tea", "description":"a nice cup of tea"}'`, 
+
 
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 - [Go JSON encoding](https://pkg.go.dev/encoding/json)
+- [Go regexp package](https://pkg.go.dev/regexp)
+- [Testify framework](https://github.com/stretchr/testify)
+- [Gorilla framework](https://www.gorillatoolkit.org/)
