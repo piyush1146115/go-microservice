@@ -3,7 +3,7 @@ An attempt to learn microservices using Golang.
 
 ### Refs:
 - [Nic Jackson's Youtube Playlist](https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_)
-
+- [Nic Jackson's Github Repo](https://github.com/nicholasjackson/building-microservices-youtube)
 
 ### Part-1:
 - Build a very basic http server using go
@@ -27,10 +27,18 @@ An attempt to learn microservices using Golang.
 - Add JSON encoding/ JSON serializing
 - Add filtering to HTTP requests
 - Add http get request handler
+- Add Graceful shutdown
 
 ### Part-4:
+- Add handlers package
 - Add http PUT and POST request handlers
-- Tested with the command : `curl -v localhost:9090/1 -XPUT -d '{"id":1, "name":"tea", "description":"a nice cup of tea"}'`, 
+- Tested with commands like: `curl -v localhost:9090/1 -XPUT -d '{"id":1, "name":"tea", "description":"a nice cup of tea"}'`, `curl -v localhost:9090 -X POST -d '{"name": "Water"}'`
+
+### Part-5:
+- Add Gorilla MUX router
+- Refactor previous code and replace default HTTP router with Gorilla MUX
+- Add [Middleware](https://github.com/gorilla/mux#middleware) to PUT and POST methods
+- Handle JSON deserializing from Middleware
 
 
 ## Resources:
