@@ -40,6 +40,8 @@ An attempt to learn microservices using Golang.
 - Add [Middleware](https://github.com/gorilla/mux#middleware) to PUT and POST methods
 - Handle JSON deserializing from Middleware
 
+### Part-6:
+- Use [Go Validators](https://github.com/go-playground/validator)
 
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
@@ -47,3 +49,4 @@ An attempt to learn microservices using Golang.
 - [Go regexp package](https://pkg.go.dev/regexp)
 - [Testify framework](https://github.com/stretchr/testify)
 - [Gorilla framework](https://www.gorillatoolkit.org/)
+- [OWASP Top 10](https://www.cloudflare.com/learning/security/threats/owasp-top-10/)
