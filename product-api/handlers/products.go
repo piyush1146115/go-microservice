@@ -1,3 +1,18 @@
+// Package classification of Product API
+//
+// Document for Product API
+//
+// Schemes: http
+// BasePath: /
+// Version: 1.0.0
+//
+// Consumes:
+// - application/json
+//
+// Produces:
+// - application/json
+// swagger:meta
+
 package handlers
 
 import (
@@ -16,16 +31,6 @@ type Products struct {
 
 func NewProducts(l *log.Logger) *Products {
 	return &Products{l}
-}
-
-func (p *Products) GetProducts(rw http.ResponseWriter, r *http.Request) {
-	p.l.Println("Handle GET Products")
-
-	lp := data.GetProducts()
-	err := lp.ToJSON(rw)
-	if err != nil {
-		http.Error(rw, "unable to marshall json", http.StatusInternalServerError)
-	}
 }
 
 func (p *Products) AddProduct(rw http.ResponseWriter, r *http.Request) {
