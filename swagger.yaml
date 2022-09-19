@@ -1,0 +1,8 @@
+info: {}
+paths:
+    /products:
+        get:
+            operationId: listProducts
+            tags:
+                - products
+swagger: "2.0"
