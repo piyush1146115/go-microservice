@@ -52,3 +52,6 @@ An attempt to learn microservices using Golang.
 - [Testify framework](https://github.com/stretchr/testify)
 - [Gorilla framework](https://www.gorillatoolkit.org/)
 - [OWASP Top 10](https://www.cloudflare.com/learning/security/threats/owasp-top-10/)
+- [Redoc](https://github.com/Redocly/redoc)
+- [Runtime Middleware](https://github.com/go-openapi/runtime/tree/master/middleware)
+- [Go-swagger](https://github.com/go-swagger/go-swagger)
