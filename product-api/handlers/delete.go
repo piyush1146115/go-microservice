@@ -13,7 +13,7 @@ import (
 // 201: noContent
 
 // DeleteProduct deletes a product from the database
-func (p *Products) DeleteProduct(rw http.ResponseWriter, r *http.Request) {
+func (p *Products) Delete(rw http.ResponseWriter, r *http.Request) {
 	// this will always convert because of the router
 	vars := mux.Vars(r)
 	id, _ := strconv.Atoi(vars["id"])

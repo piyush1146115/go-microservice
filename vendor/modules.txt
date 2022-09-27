@@ -79,6 +79,9 @@ github.com/mailru/easyjson/jwriter
 # github.com/mitchellh/mapstructure v1.4.3
 ## explicit; go 1.14
 github.com/mitchellh/mapstructure
+# github.com/nicholasjackson/env v0.6.0
+## explicit; go 1.13
+github.com/nicholasjackson/env
 # github.com/oklog/ulid v1.3.1
 ## explicit
 github.com/oklog/ulid
