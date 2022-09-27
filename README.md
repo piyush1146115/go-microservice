@@ -45,6 +45,12 @@ An attempt to learn microservices using Golang.
 - Add Json validation for product fields in Middleware
 - Test validation with simple unit test
 
+### part-7:
+- Use Swagger for documentation
+- Use Runtime Middleware
+- Add Redoc for visualizing the documentation
+- Refactor  the code
+
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 - [Go JSON encoding](https://pkg.go.dev/encoding/json)
