@@ -35,6 +35,8 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 
 	p.l.Println("[DEBUG] get record id", id)
 
+	rw.Header().Add("Content-Type", "application/json")
+
 	prod, err := data.GetProductByID(id)
 
 	switch err {

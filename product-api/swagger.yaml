@@ -3,19 +3,21 @@ consumes:
     - application/json
 definitions:
     GenericError:
-        description: GenericError is a generic error message returned by a server
+        description: GenericError GenericError is a generic error message returned by a server
         properties:
             message:
+                description: message
                 type: string
                 x-go-name: Message
         type: object
-        x-go-package: github.com/piyush1146115/go-microservice/product-api/handlers
+        x-go-package: github.com/piyush1146115/go-microservice/product-api/sdk/models
     Product:
         description: |-
-            Product defines the structure for an API product
+            Product Product defines the structure for an API product
             swagger: model
         properties:
             description:
+                description: description
                 type: string
                 x-go-name: Description
             id:
@@ -25,29 +27,33 @@ definitions:
                 type: integer
                 x-go-name: ID
             name:
+                description: name
                 type: string
                 x-go-name: Name
             price:
+                description: price
                 format: float
                 type: number
                 x-go-name: Price
             sku:
+                description: s k u
                 type: string
                 x-go-name: SKU
         required:
             - id
         type: object
-        x-go-package: github.com/piyush1146115/go-microservice/product-api/data
+        x-go-package: github.com/piyush1146115/go-microservice/product-api/sdk/models
     ValidationError:
-        description: ValidationError is a collection of validation error messages
+        description: ValidationError ValidationError is a collection of validation error messages
         properties:
             messages:
+                description: messages
                 items:
                     type: string
                 type: array
                 x-go-name: Messages
         type: object
-        x-go-package: github.com/piyush1146115/go-microservice/product-api/handlers
+        x-go-package: github.com/piyush1146115/go-microservice/product-api/sdk/models
 info:
     description: Documentation for Product API
     title: of Product API

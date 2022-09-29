@@ -52,6 +52,10 @@ An attempt to learn microservices using Golang.
 - You can now see well organized documentation on http://localhost:9090/docs by running the program
 - Refactor  the code
 
+### part-8:
+- Create auto-generated client through Swagger 
+- To generate client: `swagger generate client -f ../swagger.yaml -A product-api`
+
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 - [Go JSON encoding](https://pkg.go.dev/encoding/json)
