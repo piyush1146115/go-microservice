@@ -49,6 +49,7 @@ An attempt to learn microservices using Golang.
 - Use Swagger for documentation
 - Use Runtime Middleware
 - Add Redoc for visualizing the documentation
+- You can now see well organized documentation on http://localhost:9090/docs by running the program
 - Refactor  the code
 
 ## Resources:

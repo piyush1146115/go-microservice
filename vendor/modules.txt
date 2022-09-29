@@ -31,12 +31,14 @@ github.com/go-openapi/loads
 # github.com/go-openapi/runtime v0.24.1
 ## explicit; go 1.15
 github.com/go-openapi/runtime
+github.com/go-openapi/runtime/client
 github.com/go-openapi/runtime/logger
 github.com/go-openapi/runtime/middleware
 github.com/go-openapi/runtime/middleware/denco
 github.com/go-openapi/runtime/middleware/header
 github.com/go-openapi/runtime/middleware/untyped
 github.com/go-openapi/runtime/security
+github.com/go-openapi/runtime/yamlpc
 # github.com/go-openapi/spec v0.20.4
 ## explicit; go 1.13
 github.com/go-openapi/spec
@@ -85,6 +87,11 @@ github.com/nicholasjackson/env
 # github.com/oklog/ulid v1.3.1
 ## explicit
 github.com/oklog/ulid
+# github.com/opentracing/opentracing-go v1.2.0
+## explicit; go 1.14
+github.com/opentracing/opentracing-go
+github.com/opentracing/opentracing-go/ext
+github.com/opentracing/opentracing-go/log
 # github.com/stretchr/testify v1.8.0
 ## explicit; go 1.13
 # go.mongodb.org/mongo-driver v1.8.3
