@@ -1,0 +1,25 @@
+# github.com/davecgh/go-spew v1.1.1
+github.com/davecgh/go-spew/spew
+# github.com/fatih/color v1.7.0
+github.com/fatih/color
+# github.com/gorilla/handlers v1.4.2
+github.com/gorilla/handlers
+# github.com/gorilla/mux v1.7.3
+github.com/gorilla/mux
+# github.com/hashicorp/go-hclog v0.11.0
+github.com/hashicorp/go-hclog
+# github.com/mattn/go-colorable v0.1.4
+github.com/mattn/go-colorable
+# github.com/mattn/go-isatty v0.0.10
+github.com/mattn/go-isatty
+# github.com/nicholasjackson/env v0.6.0
+github.com/nicholasjackson/env
+# github.com/pmezard/go-difflib v1.0.0
+github.com/pmezard/go-difflib/difflib
+# github.com/stretchr/testify v1.3.0
+github.com/stretchr/testify/assert
+# golang.org/x/sys v0.0.0-20191008105621-543471e840be
+golang.org/x/sys/unix
+# golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+golang.org/x/xerrors
+golang.org/x/xerrors/internal
