@@ -1,9 +1,35 @@
 # go-microservice
-An attempt to learn microservices using Golang. 
+A hands-on attempt to learn microservices using Golang. 
 
 ### Refs:
 - [Nic Jackson's Youtube Playlist](https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_)
 - [Nic Jackson's Github Repo](https://github.com/nicholasjackson/building-microservices-youtube)
+
+## Services
+
+### Product API [./product-api](./product-api)
+Simple Go based JSON API built using the Gorilla framework. The API allows CRUD based operations on a product list.
+
+### Frontend website [./frontend](./frontend)
+ReactJS website for presenting the Product API information
+
+## Series Content
+
+Over the weeks we will look at the following topics, teaching you everything you need to know regarding building microservices with the go programming language:
+
+- Introduction to microservices
+- RESTFul microservices
+- gRPC microservices
+- Packaging applications with Docker
+- Testing microservice
+- Continuous Delivery
+- Observability
+- Using Kubernetes
+- Debugging
+- Security
+- Asynchronous microservices
+- Caching
+- Microservice reliability using a Service Mesh
 
 ### Part-1:
 - Build a very basic http server using go
@@ -62,6 +88,13 @@ An attempt to learn microservices using Golang.
 
 ### Part-10
 - How to upload and serve files using the Go standard library
+
+### Part-11
+- Handling multi-part uploads 
+
+### Part-12
+- Used Gzip compression for handling http requests
+- To test the compression mode: `curl -v localhost:9091/images/1/holding.png --compressed -o file.png`
 
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
