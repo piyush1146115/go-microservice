@@ -13,11 +13,8 @@ Simple Go based JSON API built using the Gorilla framework. The API allows CRUD 
 ### Frontend website [./frontend](./frontend)
 ReactJS website for presenting the Product API information
 
-## Series Content
+## Contents
 
-Over the weeks we will look at the following topics, teaching you everything you need to know regarding building microservices with the go programming language:
-
-- Introduction to microservices
 - RESTFul microservices
 - gRPC microservices
 - Packaging applications with Docker
@@ -94,6 +91,7 @@ Over the weeks we will look at the following topics, teaching you everything you
 
 ### Part-12
 - Used Gzip compression for handling http requests
+- To test the normal mode: `curl -v localhost:9091/images/1/holding.png -o file.png`
 - To test the compression mode: `curl -v localhost:9091/images/1/holding.png --compressed -o file.png`
 
 ## Resources:
@@ -106,3 +104,5 @@ Over the weeks we will look at the following topics, teaching you everything you
 - [Redoc](https://github.com/Redocly/redoc)
 - [Runtime Middleware](https://github.com/go-openapi/runtime/tree/master/middleware)
 - [Go-swagger](https://github.com/go-swagger/go-swagger)
+- [Accept-encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding)
+- [Go http responsewriter](https://pkg.go.dev/net/http#ResponseWriter)
