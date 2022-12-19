@@ -94,6 +94,23 @@ ReactJS website for presenting the Product API information
 - To test the normal mode: `curl -v localhost:9091/images/1/holding.png -o file.png`
 - To test the compression mode: `curl -v localhost:9091/images/1/holding.png --compressed -o file.png`
 
+### Part-13:
+- Introduced protobuf and grpc
+- Wrote a currency service
+- Test with grpcurl
+- Some grpcurl commands:
+```bash
+$ grpcurl --plaintext localhost:9092 list
+
+$ grpcurl --plaintext localhost:9092 list Currency
+
+$ grpcurl --plaintext localhost:9092 describe Currency.GetRate
+
+$ grpcurl --plaintext localhost:9092 describe .RateRequest
+
+$ grpcurl --plaintext -d '{"base" : "GBP", "destination": "USD"}' localhost:9092 Currency.GetRate
+```
+
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 - [Go JSON encoding](https://pkg.go.dev/encoding/json)
@@ -106,3 +123,7 @@ ReactJS website for presenting the Product API information
 - [Go-swagger](https://github.com/go-swagger/go-swagger)
 - [Accept-encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding)
 - [Go http responsewriter](https://pkg.go.dev/net/http#ResponseWriter)
+- [protobuf](https://developers.google.com/protocol-buffers/docs/proto3)
+- [protobuf-encoding](https://developers.google.com/protocol-buffers/docs/encoding)
+- [grpc](https://grpc.io/)
+- [grpcurl](https://github.com/fullstorydev/grpcurl)
