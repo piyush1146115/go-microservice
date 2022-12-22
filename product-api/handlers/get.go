@@ -60,8 +60,8 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 
 	// get exchange rate
 	rr := &protos.RateRequest{
-		Base:        protos.Currencies(protos.Currencies_EUR),
-		Destination: protos.Currencies(protos.Currencies_GBP),
+		Base:        protos.Currencies(protos.Currencies_value["EUR"]),
+		Destination: protos.Currencies(protos.Currencies_value["GBP"]),
 	}
 	p.cc.GetRate(context.Background(), rr)
 
@@ -71,6 +71,8 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 		data.ToJSON(&GenericError{Message: err.Error()}, rw)
 		return
 	}
+
+	p.l.Printf("Resp %#v", resp)
 
 	prod.Price = prod.Price * resp.Rate
 
