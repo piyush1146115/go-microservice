@@ -35,4 +35,26 @@ enum Currencies {
   PLN=8;
   RON=9;
   SEK=10;
+  CHF=11;
+  ISK=12;
+  NOK=13;
+  HRK=14;
+  RUB=15;
+  TRY=16;
+  AUD=17;
+  BRL=18;
+  CAD=19;
+  CNY=20;
+  HKD=21;
+  IDR=22;
+  ILS=23;
+  INR=24;
+  KRW=25;
+  MXN=26;
+  MYR=27;
+  NZD=28;
+  PHP=29;
+  SGD=30;
+  THB=31;
+  ZAR=32;
 }
