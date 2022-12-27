@@ -43,6 +43,7 @@ func main() {
 	// create the handlers
 	ph := handlers.NewProducts(l, v, db)
 
+	// create a new serve mux and register the handlers
 	sm := mux.NewRouter()
 
 	// handlers for API
@@ -52,7 +53,7 @@ func main() {
 
 	getR.HandleFunc("/products/{id:[0-9]+}", ph.ListSingle).Queries("currency", "{[A-Z]{3}}")
 	getR.HandleFunc("/products/{id:[0-9]+}", ph.ListSingle)
-	
+
 	putR := sm.Methods(http.MethodPut).Subrouter()
 	putR.HandleFunc("/products", ph.Update)
 	putR.Use(ph.MiddlewareValidateProduct)

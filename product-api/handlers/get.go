@@ -14,7 +14,7 @@ import (
 func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
 	rw.Header().Add("Content-Type", "application/json")
 
-	cur := r.URL.Query().Get("currency")
+	cur := "USD" //r.URL.Query().Get("currency")
 	p.l.Debug("Get all records", "currency", cur)
 
 	prods, err := p.productDB.GetProducts(cur)

@@ -15,6 +15,8 @@ import (
 func main() {
 	log := hclog.Default()
 
+	log.Info("Starting currency service", "port", 9092)
+
 	rates, err := data.NewRates(log)
 	if err != nil {
 		log.Error("Unable to generate rates", "error", err)
