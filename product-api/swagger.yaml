@@ -3,7 +3,7 @@ consumes:
     - application/json
 definitions:
     GenericError:
-        description: GenericError GenericError is a generic error message returned by a server
+        description: GenericError GenericError GenericError is a generic error message returned by a server
         properties:
             message:
                 description: message
@@ -13,7 +13,7 @@ definitions:
         x-go-package: github.com/piyush1146115/go-microservice/product-api/sdk/models
     Product:
         description: |-
-            Product Product defines the structure for an API product
+            Product Product Product defines the structure for an API product
             swagger: model
         properties:
             description:
@@ -44,7 +44,7 @@ definitions:
         type: object
         x-go-package: github.com/piyush1146115/go-microservice/product-api/sdk/models
     ValidationError:
-        description: ValidationError ValidationError is a collection of validation error messages
+        description: ValidationError ValidationError ValidationError is a collection of validation error messages
         properties:
             messages:
                 description: messages
@@ -63,6 +63,13 @@ paths:
         get:
             description: Return a list of products from the database
             operationId: listProducts
+            parameters:
+                - description: |-
+                    Currency used when returning the price of the product,
+                    when not specified currency is returned in GBP.
+                  in: query
+                  name: Currency
+                  type: string
             responses:
                 "200":
                     $ref: '#/responses/productsResponse'
@@ -135,6 +142,12 @@ paths:
             description: Return a list of products from the database
             operationId: listSingleProduct
             parameters:
+                - description: |-
+                    Currency used when returning the price of the product,
+                    when not specified currency is returned in GBP.
+                  in: query
+                  name: Currency
+                  type: string
                 - description: The id of the product for which the operation relates
                   format: int64
                   in: path
