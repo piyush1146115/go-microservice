@@ -156,8 +156,8 @@ github.com/oklog/ulid v1.3.1/go.mod h1:CirwcVhetQ6Lv90oh/F+FBtV6XMibvdAFo93nm5qn
 github.com/opentracing/opentracing-go v1.2.0 h1:uEJPy/1a5RIPAJ0Ov+OIO8OxWu77jEv+1B0VhjKrZUs=
 github.com/opentracing/opentracing-go v1.2.0/go.mod h1:GxEUsuufX4nBwe+T+Wl9TAgYrxe9dPLANfrWvHYVTgc=
 github.com/pelletier/go-toml v1.7.0/go.mod h1:vwGMzjaWMwyfHwgIBhI2YUM4fB6nL6lVAvS1LBMMhTE=
-github.com/piyush1146115/go-microservice/currency v0.0.0-20221228203934-dc0533bc920a h1:w0nCc3UCGA39wQDW3CqLwj7uFSKaPgEIjmtRaf+4/Ug=
-github.com/piyush1146115/go-microservice/currency v0.0.0-20221228203934-dc0533bc920a/go.mod h1:OwoCT6gW26o191UNFbq4GgLpVoWcgYWCqve0waiT0G8=
+github.com/piyush1146115/go-microservice/currency v0.0.0-20221231101813-cf66603271a2 h1:/9hw4ONzE0Ffn4vVZRLDfbmqqVIMtKfZk1lxv6vBsuQ=
+github.com/piyush1146115/go-microservice/currency v0.0.0-20221231101813-cf66603271a2/go.mod h1:OwoCT6gW26o191UNFbq4GgLpVoWcgYWCqve0waiT0G8=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=

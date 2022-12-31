@@ -2,21 +2,22 @@ package main
 
 import (
 	"context"
-	"github.com/go-openapi/runtime/middleware"
-	gohandlers "github.com/gorilla/handlers"
-	"github.com/gorilla/mux"
-	"github.com/hashicorp/go-hclog"
-	protos "github.com/piyush1146115/go-microservice/currency/protos/currency"
-	"github.com/piyush1146115/go-microservice/product-api/data"
-	"github.com/piyush1146115/go-microservice/product-api/handlers"
-	"google.golang.org/grpc"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
 
+	"github.com/go-openapi/runtime/middleware"
+	gohandlers "github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
+	"github.com/hashicorp/go-hclog"
 	"github.com/nicholasjackson/env"
+	"google.golang.org/grpc"
+
+	protos "github.com/piyush1146115/go-microservice/currency/protos/currency"
+	"github.com/piyush1146115/go-microservice/product-api/data"
+	"github.com/piyush1146115/go-microservice/product-api/handlers"
 )
 
 var bindAddress = env.String("BIND_ADDRESS", false, ":9090", "Bind address for the server")

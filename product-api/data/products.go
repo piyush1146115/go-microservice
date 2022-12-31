@@ -19,14 +19,34 @@ type Product struct {
 	//
 	// required: true
 	// min: 1
-	ID          int     `json:"id"`
-	Name        string  `json:"name" validate:"required"`
-	Description string  `json:"description"`
-	Price       float64 `json:"price" validate:"gt=0"`
-	SKU         string  `json:"sku,omitempty" validate:"required,sku"`
-	CreatedOn   string  `json:"-"`
-	UpdatedOn   string  `json:"-"`
-	DeletedOn   string  `json:"-"`
+	ID int `json:"id"` // Unique identifier for the product
+
+	// the name for this product
+	//
+	// required: true
+	// max length: 255
+	Name string `json:"name" validate:"required"`
+
+	// the description for this product
+	//
+	// required: false
+	// max length: 10000
+	Description string `json:"description"`
+
+	// the price for this product
+	//
+	// required: false
+	// min: 0.01
+	Price float64 `json:"price" validate:"gt=0"`
+
+	// the SKU for the product
+	//
+	// required: true
+	// pattern: [a-z]+-[a-z]+-[a-z]+
+	SKU       string `json:"sku,omitempty" validate:"required,sku"`
+	CreatedOn string `json:"-"`
+	UpdatedOn string `json:"-"`
+	DeletedOn string `json:"-"`
 }
 
 func (p *Product) Validate() error {
@@ -62,14 +82,43 @@ func (p *ProductsDB) handleUpdates() {
 	p.client = sub
 
 	for {
-		rr, err := sub.Recv()
+		// Recv returns a StreamingRateResponse which can contain one of two messages
+		// RateResponse or an Error.
+		// We need to handle each case separately
+		srr, err := sub.Recv()
+
+		// handle connection errors
+		// this is normally terminal requires to reconnect
 		if err != nil {
-			p.log.Error("unable to subscribe for rates", "error", err)
+			p.log.Error("Error while waiting for message", "error", err)
 			return
 		}
-		p.log.Info("Received updated rate from server", "dest", rr.GetDestination().String())
 
-		p.rates[rr.Destination.String()] = rr.Rate
+		// handle a returned error message
+		if ge := srr.GetError(); ge != nil {
+			sre := status.FromProto(ge)
+
+			if sre.Code() == codes.InvalidArgument {
+				errDetails := ""
+
+				// get the RateRequest serialized in the error response
+				// Details is a collection, but we are only returning a single item
+				if d := sre.Details(); len(d) > 0 {
+					p.log.Error("Deets", "d", d)
+					if rr, ok := d[0].(*protos.RateRequest); ok {
+						errDetails = fmt.Sprintf("base: %s destination: %s", rr.GetBase().String(), rr.GetDestination().String())
+					}
+				}
+
+				p.log.Error("Received error from currency service rate subscription", "error", ge.GetMessage(), "details", errDetails)
+			}
+		}
+
+		// handle a rate response
+		if rr := srr.GetRateResponse(); rr != nil {
+			p.log.Info("Received updated rate from server", "dest", rr.GetDestination().String())
+			p.rates[rr.Destination.String()] = rr.Rate
+		}
 	}
 }
 

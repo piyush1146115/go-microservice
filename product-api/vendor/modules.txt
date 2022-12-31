@@ -122,7 +122,7 @@ github.com/oklog/ulid
 github.com/opentracing/opentracing-go
 github.com/opentracing/opentracing-go/ext
 github.com/opentracing/opentracing-go/log
-# github.com/piyush1146115/go-microservice/currency v0.0.0-20221228203934-dc0533bc920a
+# github.com/piyush1146115/go-microservice/currency v0.0.0-20221231101813-cf66603271a2
 ## explicit; go 1.18
 github.com/piyush1146115/go-microservice/currency/protos/currency
 # go.mongodb.org/mongo-driver v1.10.0

@@ -13,7 +13,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/hashicorp/go-hclog v1.3.1
 	github.com/nicholasjackson/env v0.6.0
-	github.com/piyush1146115/go-microservice/currency v0.0.0-20221228203934-dc0533bc920a
+	github.com/piyush1146115/go-microservice/currency v0.0.0-20221231101813-cf66603271a2
 	google.golang.org/grpc v1.51.0
 )
 
