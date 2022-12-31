@@ -21,15 +21,11 @@ type Currency struct {
 
 // NewCurrency creates a new Currency server
 func NewCurrency(r *data.ExchangeRates, l hclog.Logger) *Currency {
-	go func() {
-		ru := r.MonitorRates(5 * time.Second)
+	c := &Currency{r, l, make(map[protos.Currency_SubscribeRatesServer][]*protos.RateRequest), protos.UnimplementedCurrencyServer{}}
 
-		for range ru {
-			l.Info("Got updated rates")
-		}
-	}()
+	go c.handleUpdates()
 
-	return &Currency{r, l, make(map[protos.Currency_SubscribeRatesServer][]*protos.RateRequest), protos.UnimplementedCurrencyServer{}}
+	return c
 }
 
 func (c *Currency) handleUpdates() {
@@ -45,11 +41,17 @@ func (c *Currency) handleUpdates() {
 			for _, rr := range v {
 				r, err := c.rates.GetRates(rr.GetBase().String(), rr.GetDestination().String())
 				if err != nil {
-					c.log.Error("Unable to get update rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
+					c.log.Error("Unable to get updated rates", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
 				}
 
-				if err := k.Send(&protos.RateResponse{Base: rr.Base, Destination: rr.Destination, Rate: r}); err != nil {
-					c.log.Error("unable to send update rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
+				err = k.Send(&protos.StreamingRateResponse{
+					Message: &protos.StreamingRateResponse_RateResponse{
+						RateResponse: &protos.RateResponse{Base: rr.Base, Destination: rr.Destination, Rate: r},
+					},
+				})
+
+				if err != nil {
+					c.log.Error("Unable to send update rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
 				}
 			}
 		}
@@ -82,7 +84,7 @@ func (c *Currency) GetRate(ctx context.Context, rr *protos.RateRequest) (*protos
 		return nil, err
 	}
 
-	return &protos.RateResponse{Rate: rate}, nil
+	return &protos.RateResponse{Base: rr.Base, Destination: rr.Destination, Rate: rate}, nil
 }
 
 // SubscribeRates implements the gRPC bidirectional streaming method for the server
@@ -107,6 +109,27 @@ func (c *Currency) SubscribeRates(src protos.Currency_SubscribeRatesServer) erro
 		rrs, ok := c.subscriptions[src]
 		if !ok {
 			rrs = []*protos.RateRequest{}
+		}
+
+		// check if already in the subscribe list and return a gRPC error
+		for _, r := range rrs {
+			// if we already have subscribed to thhis currency, return an error
+			if r.Base == rr.Base && r.Destination == rr.Destination {
+				c.log.Error("Subscription already active", "base", rr.Base.String(), "dest", rr.Destination.String())
+
+				grpcError := status.New(codes.InvalidArgument, "Subscription already active for rate")
+
+				grpcError, err = grpcError.WithDetails(rr)
+				if err != nil {
+					c.log.Error("Unable to add metadata to error message", "error", err)
+					continue
+				}
+
+				// Can't return error as that will terminate the connection, instead must send an error whichh
+				// can be handled by the client Recv stream
+				rrs := &protos.StreamingRateResponse_Error{Error: grpcError.Proto()}
+				src.Send(&protos.StreamingRateResponse{Message: rrs})
+			}
 		}
 
 		rrs = append(rrs, rr)
