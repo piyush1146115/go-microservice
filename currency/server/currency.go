@@ -5,6 +5,8 @@ import (
 	"github.com/hashicorp/go-hclog"
 	"github.com/piyush1146115/go-microservice/currency/data"
 	protos "github.com/piyush1146115/go-microservice/currency/protos/currency"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"io"
 	"time"
 )
@@ -38,7 +40,18 @@ func (c *Currency) handleUpdates() {
 
 		// loop over subscribed clients
 		for k, v := range c.subscriptions {
-			
+
+			// loop over subscribed rates
+			for _, rr := range v {
+				r, err := c.rates.GetRates(rr.GetBase().String(), rr.GetDestination().String())
+				if err != nil {
+					c.log.Error("Unable to get update rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
+				}
+
+				if err := k.Send(&protos.RateResponse{Base: rr.Base, Destination: rr.Destination, Rate: r}); err != nil {
+					c.log.Error("unable to send update rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
+				}
+			}
 		}
 	}
 }
@@ -47,6 +60,22 @@ func (c *Currency) handleUpdates() {
 // for the two given currencies.
 func (c *Currency) GetRate(ctx context.Context, rr *protos.RateRequest) (*protos.RateResponse, error) {
 	c.log.Info("Handle request for GetRate", "base", rr.GetBase(), "dest", rr.GetDestination())
+
+	if rr.Base == rr.Destination {
+		err := status.Newf(
+			codes.InvalidArgument,
+			"Base currency %s can not be same as the destination currency %s",
+			rr.Base.String(),
+			rr.Destination.String(),
+		)
+
+		err, wde := err.WithDetails(rr)
+		if wde != nil {
+			return nil, wde
+		}
+
+		return nil, err.Err()
+	}
 
 	rate, err := c.rates.GetRates(rr.GetBase().String(), rr.GetDestination().String())
 	if err != nil {
