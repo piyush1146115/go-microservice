@@ -1,11 +1,14 @@
 # go-microservice
 A hands-on attempt to learn microservices using Golang. 
 
-### Refs:
+### Acknowledgement:
+This project followed Nic Jackson's `Building Microservice with Go` tutorial series.
+
 - [Nic Jackson's Youtube Playlist](https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_)
 - [Nic Jackson's Github Repo](https://github.com/nicholasjackson/building-microservices-youtube)
 
 ## Services
+This project consists of the following different services:
 
 ### Product API [./product-api](./product-api)
 Simple Go based JSON API built using the Gorilla framework. The API allows CRUD based operations on a product list.
@@ -13,103 +16,11 @@ Simple Go based JSON API built using the Gorilla framework. The API allows CRUD 
 ### Frontend website [./frontend](./frontend)
 ReactJS website for presenting the Product API information
 
-## Contents
+### Product-images [./product-images](./product-images)
+Simple Go based file service that can download and upload data and use `gzip` for file compression
 
-- RESTFul microservices
-- gRPC microservices
-- Packaging applications with Docker
-- Testing microservice
-- Continuous Delivery
-- Observability
-- Using Kubernetes
-- Debugging
-- Security
-- Asynchronous microservices
-- Caching
-- Microservice reliability using a Service Mesh
-
-### Part-1:
-- Build a very basic http server using go
-- Add different handlefuncs for different paths
-- Add some logging and write to the response
-- Handle error and return appropriate code for that 
-- Run the server using `go run main.go`
-- Use curl for query like `curl -v -d 'Request' localhost:9090`, `curl -v localhost:9090/goodbye`, `curl -v localhost:9090`
-
-### Part-2:
-- Add handler package
-- Build custom handlers
-- Use logger wih specific info
-- Define custom http server
-- Implement graceful shutdown
-- Add ReadTimeout, IdleTimeout, WriteTimeout
-
-### Part-3:
-- Add product package
-- Introduce RESTful services
-- Add JSON encoding/ JSON serializing
-- Add filtering to HTTP requests
-- Add http get request handler
-- Add Graceful shutdown
-
-### Part-4:
-- Add handlers package
-- Add http PUT and POST request handlers
-- Tested with commands like: `curl -v localhost:9090/1 -XPUT -d '{"id":1, "name":"tea", "description":"a nice cup of tea"}'`, `curl -v localhost:9090 -X POST -d '{"name": "Water"}'`
-
-### Part-5:
-- Add Gorilla MUX router
-- Refactor previous code and replace default HTTP router with Gorilla MUX
-- Add [Middleware](https://github.com/gorilla/mux#middleware) to PUT and POST methods
-- Handle JSON deserializing from Middleware
-
-### Part-6:
-- Use [Go Validators](https://github.com/go-playground/validator)
-- Add Json validation for product fields in Middleware
-- Test validation with simple unit test
-
-### Part-7:
-- Use Swagger for documentation
-- Use Runtime Middleware
-- Add Redoc for visualizing the documentation
-- You can now see well organized documentation on http://localhost:9090/docs by running the program
-- Refactor  the code
-
-### Part-8:
-- Create auto-generated client through Swagger 
-- To generate client: `swagger generate client -f ../swagger.yaml -A product-api`
-
-### Part-9:
-- Adding frontend
-- CORS
-
-### Part-10
-- How to upload and serve files using the Go standard library
-
-### Part-11
-- Handling multi-part uploads 
-
-### Part-12
-- Used Gzip compression for handling http requests
-- To test the normal mode: `curl -v localhost:9091/images/1/holding.png -o file.png`
-- To test the compression mode: `curl -v localhost:9091/images/1/holding.png --compressed -o file.png`
-
-### Part-13:
-- Introduced protobuf and grpc
-- Wrote a currency service
-- Test with grpcurl
-- Some grpcurl commands:
-```bash
-$ grpcurl --plaintext localhost:9092 list
-
-$ grpcurl --plaintext localhost:9092 list Currency
-
-$ grpcurl --plaintext localhost:9092 describe Currency.GetRate
-
-$ grpcurl --plaintext localhost:9092 describe .RateRequest
-
-$ grpcurl --plaintext -d '{"base" : "GBP", "destination": "USD"}' localhost:9092 Currency.GetRate
-```
+### Currency [./currency](./currency)
+gRPC and Go based RPC service to get updated rates of different currencies from European central bank. 
 
 ## Resources:
 - [Rest API Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
@@ -127,3 +38,6 @@ $ grpcurl --plaintext -d '{"base" : "GBP", "destination": "USD"}' localhost:9092
 - [protobuf-encoding](https://developers.google.com/protocol-buffers/docs/encoding)
 - [grpc](https://grpc.io/)
 - [grpcurl](https://github.com/fullstorydev/grpcurl)
+- [grpc server-side streaming](https://grpc.io/docs/languages/go/basics/#server-side-streaming-rpc)
+- [grpc client-side streaming](https://grpc.io/docs/languages/go/basics/#client-side-streaming-rpc)
+- [grpc error handling](https://grpc.io/docs/guides/error/)
