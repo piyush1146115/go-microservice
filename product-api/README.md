@@ -13,7 +13,7 @@ You can see well organized documentation on `http://localhost:9090/docs` after r
 The applicaiton can be run with `go run`
 
 ```
-➜ go run main.go0
+➜ go run main.go
 products-api 2020/02/16 16:15:11 Starting server on port 9090
 
 curl localhost:9090/products
